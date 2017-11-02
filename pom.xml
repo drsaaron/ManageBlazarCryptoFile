@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.7.RELEASE</version>
+        <version>1.5.8.RELEASE</version>
     </parent>
     
     <dependencies>
@@ -28,4 +28,16 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.blazartech.products.crypto.maintain.Main</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
