@@ -20,13 +20,18 @@ import javax.swing.event.ListSelectionEvent;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
- *
+ * a GUI to allow updates to the crypto file.  This will be a singleton as not
+ * all executions of the program will require this window to be created, and we
+ * only want to create it if we actually use it.
+ * 
  * @author aar1069
  */
 @Component
+@Scope("prototype")
 public class MainWindow extends JFrame implements InitializingBean {
 
     private static final Logger logger = Logger.getLogger(MainWindow.class);
@@ -86,7 +91,7 @@ public class MainWindow extends JFrame implements InitializingBean {
         jPanel1 = new javax.swing.JPanel();
         updateButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Blazar crypto file");
 
         fileTable.setModel(cryptoFileTableModel);
