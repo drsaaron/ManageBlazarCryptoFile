@@ -6,7 +6,8 @@
 package com.blazartech.products.crypto.maintain;
 
 import com.blazartech.products.crypto.BlazarCryptoFile;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -18,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public abstract class BaseCryptoFileMaintainer implements CryptoFileMaintainer {
 
-    private static final Logger logger = Logger.getLogger(BaseCryptoFileMaintainer.class);
+    private static final Logger logger = LoggerFactory.getLogger(BaseCryptoFileMaintainer.class);
     
     /**
      * a method to implement the actual maintenance.

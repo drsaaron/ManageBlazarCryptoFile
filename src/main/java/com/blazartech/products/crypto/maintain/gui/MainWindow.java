@@ -17,7 +17,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.ListSelectionEvent;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -34,7 +35,7 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 public class MainWindow extends JFrame implements InitializingBean {
 
-    private static final Logger logger = Logger.getLogger(MainWindow.class);
+    private static final Logger logger = LoggerFactory.getLogger(MainWindow.class);
 
     @Autowired
     private BlazarCryptoFile cryptoFile;

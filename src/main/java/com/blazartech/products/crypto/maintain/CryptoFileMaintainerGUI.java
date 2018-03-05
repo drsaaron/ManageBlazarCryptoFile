@@ -8,7 +8,8 @@ package com.blazartech.products.crypto.maintain;
 import com.blazartech.products.crypto.maintain.gui.MainWindow;
 import java.awt.EventQueue;
 import javax.inject.Provider;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +20,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CryptoFileMaintainerGUI extends BaseCryptoFileMaintainer {
 
-    private static final Logger logger = Logger.getLogger(CryptoFileMaintainerGUI.class);
+    private static final Logger logger = LoggerFactory.getLogger(CryptoFileMaintainerGUI.class);
 
     @Autowired
     private Provider<MainWindow> mainWindow;

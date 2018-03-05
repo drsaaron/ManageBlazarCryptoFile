@@ -5,7 +5,8 @@
  */
 package com.blazartech.products.crypto.maintain;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CryptoFileMaintainerCommandLine extends BaseCryptoFileMaintainer {
 
-    private static final Logger logger = Logger.getLogger(CryptoFileMaintainerCommandLine.class);
+    private static final Logger logger = LoggerFactory.getLogger(CryptoFileMaintainerCommandLine.class);
 
     @Override
     protected void maintainCryptoFile(String... args) {
