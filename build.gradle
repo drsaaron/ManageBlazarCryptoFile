@@ -29,7 +29,11 @@ repositories {
      mavenLocal()
 }
 
+configurations {
+  runtime.exclude group: 'org.apache.logging.log4j', module: 'log4j-slf4j-impl'
+}
+
 dependencies {
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version:'2.0.0.RELEASE'
-    compile group: 'com.blazartech', name: 'BlazarCryptoFile-mvn', version:'1.0-SNAPSHOT'
+  compile group: 'org.springframework.boot', name: 'spring-boot-starter', version:'2.0.0.RELEASE'
+  compile group: 'com.blazartech', name: 'BlazarCryptoFile-mvn', version:'1.0-SNAPSHOT'
 }
