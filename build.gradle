@@ -1,0 +1,35 @@
+plugins {
+  // add plugin to build an executable jar
+  id "org.springframework.boot" version "2.0.0.RELEASE"
+}
+
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.blazartech'
+version = '1.0-SNAPSHOT'
+
+description = "program to manage a crypto file"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+}
+
+repositories {
+        
+     maven { url "https://repo.spring.io/milestone" }
+     maven { url "https://repo.spring.io/snapshot" }
+     maven { url "https://dl.bintray.com/rabbitmq/maven-milestones" }
+     maven { url "http://repo.maven.apache.org/maven2" }
+
+     mavenLocal()
+}
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version:'2.0.0.RELEASE'
+    compile group: 'com.blazartech', name: 'BlazarCryptoFile-mvn', version:'1.0-SNAPSHOT'
+}
