@@ -28,4 +28,5 @@ else
 fi
 
 # run
-exec mvn exec:java -Dexec.args="$commandLine"
+#exec mvn exec:java -Dexec.args="$commandLine"
+java -jar target/ManageBlazarCryptoFile-1.0-SNAPSHOT.jar $commandLine
