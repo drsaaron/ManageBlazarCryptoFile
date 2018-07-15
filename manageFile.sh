@@ -27,6 +27,20 @@ else
     commandLine=
 fi
 
+# initial directory setup, if not already there.
+[ -d ~/.blazartech/crypto ] || mkdir -p ~/.blazartech/crypto
+if [ ! -f ~/.blazartech/crypto.properties ]
+then
+    cat > ~/.blazartech/crypto.properties <<EOF
+blazartech.crypto.file=\${user.home}/.blazartech/crypto/crypto.dat
+blazartech.crypto.keyFile=\${user.home}/.blazartech/crypto/crypto.key
+EOF
+
+fi
+
 # run
 #exec mvn exec:java -Dexec.args="$commandLine"
 java -jar target/ManageBlazarCryptoFile-1.0-SNAPSHOT.jar $commandLine
+
+# ensure the key file is properly protected
+chmod 600 ~/.blazartech/crypto/crypto.key
