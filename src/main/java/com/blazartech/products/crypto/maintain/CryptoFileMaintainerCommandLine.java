@@ -37,7 +37,7 @@ public class CryptoFileMaintainerCommandLine extends BaseCryptoFileMaintainer {
     @Override
     public boolean isApplicableMaintainer(String... args) {
         // this is applicable if there are multiple command line arguments
-        return (args.length > 0);
+        return (args.length > 1);
     }
 
 }

@@ -1,6 +1,6 @@
 #! /bin/ksh
 
-while getopts :u:r:p: option
+while getopts :u:r:p:l option
 do
     case $option in
 	u)
@@ -12,6 +12,9 @@ do
 	p)
 	    password=$OPTARG
 	    ;;
+	l)
+	    doList=true
+	    ;;
 	*)
 	    echo "invalid option $OPTION"
 	    echo "usage: $(basename $0) [-u user -r resource -p password]" 1>&2
@@ -20,7 +23,10 @@ do
 done
 
 # build command line
-if [[ $# > 0 ]]
+if [ "$doList" = "true" ]
+then
+    commandLine="list"
+elif [[ $# > 0 ]]
 then
     commandLine="$user $resource $password"
 else
@@ -39,7 +45,6 @@ EOF
 fi
 
 # run
-#exec mvn exec:java -Dexec.args="$commandLine"
 java -jar target/ManageBlazarCryptoFile-1.0-SNAPSHOT.jar $commandLine
 
 # ensure the key file is properly protected
