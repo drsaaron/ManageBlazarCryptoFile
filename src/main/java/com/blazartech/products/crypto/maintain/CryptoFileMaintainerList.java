@@ -25,10 +25,10 @@ public class CryptoFileMaintainerList extends BaseCryptoFileMaintainer {
         logger.info("listing crypto file");
         
         Collection<BlazarCryptoFileKey> keys = getCryptoFile().getKeys();
-        for (BlazarCryptoFileKey key : keys) {
+        keys.forEach((key) -> {
             String password = getCryptoFile().getPassword(key.getUserID(), key.getResource());
             logger.info("user: " + key.getUserID() + ", resource: " + key.getResource() + ", password = " + password);
-        }
+        });
     }
 
     @Override
