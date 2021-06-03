@@ -1,4 +1,4 @@
-#! /bin/ksh
+#! /bin/sh
 
 while getopts :u:r:p:l option
 do
@@ -26,7 +26,7 @@ done
 if [ "$doList" = "true" ]
 then
     commandLine="list"
-elif [[ $# > 0 ]]
+elif [ $# -gt 0 ]
 then
     commandLine="$user $resource $password"
 else
@@ -45,7 +45,7 @@ EOF
 fi
 
 # run
-java -jar target/ManageBlazarCryptoFile-1.0-SNAPSHOT.jar $commandLine
+java -jar target/ManageBlazarCryptoFile-$(getPomAttribute.sh version).jar $commandLine
 
 # ensure the key file is properly protected
 chmod 600 ~/.blazartech/crypto/crypto.key
