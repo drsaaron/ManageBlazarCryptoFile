@@ -52,12 +52,15 @@ public class CryptoFileTableModel extends AbstractTableModel {
         BlazarCryptoFileKey key = keys[rowIndex];
         
         switch (columnIndex) {
-            case 0:
+            case 0 -> {
                 return key.getUserID();
-            case 1:
+            }
+            case 1 -> {
                 return key.getResource();
-            case 2:
+            }
+            case 2 -> {
                 return cryptoFile.getPassword(key.getUserID(), key.getResource());
+            }
         }
         
         // should never get here.
