@@ -45,7 +45,7 @@ EOF
 fi
 
 # run
-java -jar target/ManageBlazarCryptoFile-$(getPomAttribute.sh version).jar $commandLine
+java -jar target/$(getPomAttribute.sh artifactId)-$(getPomAttribute.sh version).jar $commandLine
 
 # ensure the key file is properly protected
 chmod 600 ~/.blazartech/crypto/crypto.key
