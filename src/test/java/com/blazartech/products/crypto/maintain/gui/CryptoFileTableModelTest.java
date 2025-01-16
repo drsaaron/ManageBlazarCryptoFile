@@ -44,7 +44,7 @@ public class CryptoFileTableModelTest {
     @Autowired
     private CryptoFileTableModel instance;
     
-    @MockBean
+    @MockitoBean
     private BlazarCryptoFile cryptoFile;
 
     static class MockKey implements BlazarCryptoFileKey {
