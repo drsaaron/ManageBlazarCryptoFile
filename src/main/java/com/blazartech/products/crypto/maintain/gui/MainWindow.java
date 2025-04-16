@@ -21,6 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 /**
@@ -31,6 +32,7 @@ import org.springframework.stereotype.Component;
  * @author aar1069
  */
 @Component
+@Scope("prototype")
 public class MainWindow extends JFrame implements InitializingBean {
 
     private static final Logger logger = LoggerFactory.getLogger(MainWindow.class);

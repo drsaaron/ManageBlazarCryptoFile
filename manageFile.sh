@@ -45,7 +45,7 @@ EOF
 fi
 
 # run
-java -jar target/$(getPomAttribute.sh artifactId)-$(getPomAttribute.sh version).jar $commandLine
+runBlazarService.sh $commandLine
 
 # ensure the key file is properly protected
 chmod 600 ~/.blazartech/crypto/crypto.key

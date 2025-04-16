@@ -6,6 +6,7 @@
 package com.blazartech.products.crypto.maintain;
 
 import com.blazartech.products.crypto.maintain.gui.MainWindow;
+import jakarta.inject.Provider;
 import java.awt.EventQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,12 +23,12 @@ public class CryptoFileMaintainerGUI extends BaseCryptoFileMaintainer {
     private static final Logger logger = LoggerFactory.getLogger(CryptoFileMaintainerGUI.class);
 
     @Autowired
-    private MainWindow mainWindow;
+    private Provider<MainWindow> mainWindow;
     
     @Override
     protected void maintainCryptoFile(String... args) {
         EventQueue.invokeLater(() -> {
-            mainWindow.setVisible(true);
+            mainWindow.get().setVisible(true);
         });
     }
 
