@@ -11,11 +11,11 @@
 package com.blazartech.products.crypto.maintain.gui;
 
 import com.blazartech.products.crypto.BlazarCryptoFile;
+import java.util.stream.Stream;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.event.ListSelectionEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +23,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.util.function.ThrowingConsumer;
 
 /**
  * a GUI to allow updates to the crypto file.  This will be a singleton as not
@@ -45,17 +46,10 @@ public class MainWindow extends JFrame implements InitializingBean {
 
     static {
         // use Nimbus look & feel
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
-            logger.error("error setting look & feel: " + e.getMessage(), e);
-            throw new RuntimeException("error setting look & feel: " + e.getMessage(), e);
-        }
+        Stream.of(UIManager.getInstalledLookAndFeels())
+                .filter(info -> "Nimbus".equals(info.getName()))
+                .findFirst()
+                .ifPresent(ThrowingConsumer.of(info -> UIManager.setLookAndFeel(info.getClassName())));
     }
     
     /**
