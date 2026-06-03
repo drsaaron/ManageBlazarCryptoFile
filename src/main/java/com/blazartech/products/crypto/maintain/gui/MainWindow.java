@@ -70,6 +70,7 @@ public class MainWindow extends JFrame implements InitializingBean {
 
     private void handleRowSelection() {
         updateButton.setEnabled(true);
+        deleteButton.setEnabled(true);
     }
 
     /**
@@ -84,6 +85,7 @@ public class MainWindow extends JFrame implements InitializingBean {
         jScrollPane1 = new javax.swing.JScrollPane();
         fileTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
+        deleteButton = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -95,6 +97,15 @@ public class MainWindow extends JFrame implements InitializingBean {
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+
+        deleteButton.setText("Delete");
+        deleteButton.setToolTipText("delete the selected password");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(deleteButton);
 
         updateButton.setText("Update");
         updateButton.setToolTipText("update the password");
@@ -128,7 +139,23 @@ public class MainWindow extends JFrame implements InitializingBean {
         }
     }//GEN-LAST:event_updateButtonActionPerformed
 
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        int rowNumber = fileTable.getSelectedRow();
+        CryptoFileTableModel model = (CryptoFileTableModel) fileTable.getModel();
+        String userID = (String) model.getValueAt(rowNumber, 0);
+        String resource = (String) model.getValueAt(rowNumber, 1);
+
+        cryptoFile.deletePassword(userID, resource);
+        
+        model.fireTableDataChanged();
+        
+        // there's mo longer a selected row so diable the buttons
+        updateButton.setEnabled(false);
+        deleteButton.setEnabled(false);
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton deleteButton;
     private javax.swing.JTable fileTable;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
