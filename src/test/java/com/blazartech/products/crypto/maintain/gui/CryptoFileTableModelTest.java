@@ -143,6 +143,10 @@ public class CryptoFileTableModelTest {
         expResult = PW_2;
         result = instance.getValueAt(1, 2);
         assertEquals(expResult, result);
+        
+        expResult = "";
+        result = instance.getValueAt(rowIndex, 10000);
+        assertEquals(expResult, result);
     }
 
     @Test

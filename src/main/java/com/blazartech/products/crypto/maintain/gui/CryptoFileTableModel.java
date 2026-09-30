@@ -51,20 +51,13 @@ public class CryptoFileTableModel extends AbstractTableModel {
         
         BlazarCryptoFileKey key = keys[rowIndex];
         
-        switch (columnIndex) {
-            case 0 -> {
-                return key.getUserID();
-            }
-            case 1 -> {
-                return key.getResource();
-            }
-            case 2 -> {
-                return cryptoFile.getPassword(key.getUserID(), key.getResource());
-            }
-        }
+        return switch (columnIndex) {
+            case 0 -> key.getUserID();
+            case 1 -> key.getResource();
+            case 2 -> cryptoFile.getPassword(key.getUserID(), key.getResource());
+            default -> "";
+        };
         
-        // should never get here.
-        return "";
     }
     
 }
